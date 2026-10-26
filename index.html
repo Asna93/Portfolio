@@ -1568,6 +1568,136 @@
         flex-direction: column;
       }
     }
+
+
+
+    /* ── HERO: PHOTO AS RIGHT HALF ── */
+.hero {
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0 0 0 5rem;
+  min-height: 100vh;
+}
+
+.hero-text {
+  padding: 7rem 3rem 4rem 0;
+}
+
+.hero-visual {
+  position: relative;
+  align-self: stretch;
+  display: block;
+  min-height: 100vh;
+}
+
+.photo-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.photo-box {
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  transform: none;
+  box-shadow: none;
+  background-position: center top;
+}
+
+.photo-wrap:hover .photo-box {
+  transform: none;
+}
+
+/* fade the left edge into the page background + darken the bottom for the stats */
+.photo-box::after {
+  border-radius: 0;
+  background:
+    linear-gradient(to right, var(--bg) 0%, transparent 35%),
+    linear-gradient(to top, rgba(10, 10, 10, .55) 0%, transparent 30%);
+}
+
+.photo-accent {
+  display: none;
+}
+
+/* stats sit on top of the photo, bottom centre */
+.stats-row {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(360px, 85%);
+  z-index: 2;
+}
+
+/* ── Tablet / mobile: photo on top, full width ── */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .hero-visual {
+    order: -1;
+    min-height: 70vh;
+  }
+
+  .photo-wrap {
+    max-width: none;
+  }
+
+  .photo-box::after {
+    background: linear-gradient(to top, var(--bg) 0%, transparent 40%);
+  }
+
+  .hero-text {
+    padding: 2rem 2rem 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-text {
+    padding: 2rem 1.25rem 3rem;
+  }
+}
+
+
+/* ── Hero tweaks: nav visibility + stats position ── */
+
+/* dark top fade so the nav links are readable over the photo (dark mode) */
+[data-theme="dark"] .photo-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 130px;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, .85) 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* desktop only: stats move to bottom-left, smaller */
+@media (min-width: 901px) {
+  .stats-row {
+    left: 1.5rem;
+    bottom: 1rem;
+    transform: none;
+    width: 240px;
+    gap: .5rem;
+  }
+
+  .stat-box {
+    padding: .6rem;
+  }
+
+  .stat-n {
+    font-size: 1.2rem;
+  }
+}
   </style>
 </head>
 
@@ -1844,8 +1974,33 @@
         </div>
       </div>
 
+            <div class="proj-card reveal">
+        <div class="proj-num">Project — 002</div>
+        <div class="proj-name">LUMÉA — Cosmetics Store</div>
+        <p class="proj-desc">Full-stack luxury beauty e-commerce platform for a fictional cosmetics brand. Features a
+          24-product catalog with filtering and search, cart and Stripe checkout, user authentication, an admin
+          dashboard, and bilingual English / Arabic support with RTL layout.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Next.js</span>
+          <span class="proj-tag">TypeScript</span>
+          <span class="proj-tag">Django REST</span>
+          <span class="proj-tag">PostgreSQL</span>
+          <span class="proj-tag">Stripe</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://lumea-cosmetics-two.vercel.app" target="_blank" rel="noopener" class="proj-link">Demo <svg
+              width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M7 7h10v10" />
+            </svg></a>
+          <a href="https://github.com/Asna93/lumea-cosmetics" target="_blank" rel="noopener" class="proj-link">Code <svg
+              width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M7 7h10v10" />
+            </svg></a>
+        </div>
+      </div>
+
        <div class="proj-card reveal">
-      <div class="proj-num">Project — 002</div>
+      <div class="proj-num">Project — 003</div>
       <div class="proj-name">CRM Application</div>
       <p class="proj-desc">Full-stack Customer Relationship Management (CRM) system for managing leads, deals,
         companies, and tickets. Features user authentication, dashboard analytics, and complete CRUD operations with a
@@ -1869,7 +2024,7 @@
     </div>
     
       <div class="proj-card reveal">
-        <div class="proj-num">Project — 003</div>
+        <div class="proj-num">Project — 004</div>
         <div class="proj-name">E-Commerce Application</div>
         <p class="proj-desc">Full-featured online shopping platform with product browsing, shopping cart, and user
           authentication built with React.</p>
@@ -1887,7 +2042,7 @@
         </div>
       </div>
       <div class="proj-card reveal">
-        <div class="proj-num">Project — 004</div>
+        <div class="proj-num">Project — 005</div>
         <div class="proj-name">Homesworth — Price Predictor</div>
         <p class="proj-desc">Machine Learning app that predicts house prices based on location, size, and amenities
           using Python regression algorithms.</p>
@@ -1905,7 +2060,7 @@
         </div>
       </div>
       <div class="proj-card reveal">
-        <div class="proj-num">Project — 005</div>
+        <div class="proj-num">Project — 006</div>
         <div class="proj-name">Weather App</div>
         <p class="proj-desc">Intuitive real-time weather application for any location using live API integration with a
           clean, responsive layout.</p>
